@@ -4,29 +4,29 @@ models:
   - name: customers
     columns:
       - name: customer_id
-        test:
+        tests:
           - unique
           - not_null
-  
+
   - name: stg_customers
     columns:
       - name: customer_id
-        test:
+        tests:
           - unique
           - not_null
-  
+
   - name: stg_orders
     columns:
       - name: order_id
-        test:
+        tests:
           - unique
           - not_null
       - name: status
-        test:
+        tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
       - name: customer_id
-        test:
+        tests:
           - not_null
           - relationships:
               to: ref('stg_customers')
